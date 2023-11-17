@@ -8,15 +8,13 @@
 
 This example demonstrates how to implenent the [FetchAppointmentsMethod](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.FetchAppointmentsMethod) delegate to dynamically limit the number of appointments loaded into the [Scheduler](https://docs.devexpress.com/AspNetMvc/11675/components/scheduler/scheduler-overview) storage. This approach can be useful when a scheduler contains a large amount of data, and only a small part of it needs to be loaded at one time.
 
-Call [SchedulerExtension.Bind(FetchAppointmentsMethod)](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SchedulerExtension.Bind(DevExpress.Web.Mvc.FetchAppointmentsMethod)) or [SchedulerExtension.Bind(FetchAppointmentsMethod, Object)](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SchedulerExtension.Bind(DevExpress.Web.Mvc.FetchAppointmentsMethod-System.Object)) method to bind the Scheduler component to an appointment data source modified dynamically. 
+Call [Bind(FetchAppointmentsMethod)](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SchedulerExtension.Bind(DevExpress.Web.Mvc.FetchAppointmentsMethod)) or [Bind(FetchAppointmentsMethod, Object)](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SchedulerExtension.Bind(DevExpress.Web.Mvc.FetchAppointmentsMethod-System.Object)) method to bind the Scheduler component to an appointment data source modified dynamically. Use the `FetchAppointmentsMethod` delegate to limit the number of appointments loaded into the Scheduler storage. The [Interval](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraScheduler.TimeIntervalEventArgs.Interval) property specifies the visible time interval. You can use this argument to calculate a new time interval to query a data source for appointments. Fetched appointments are returned to the caller to populate the scheduler.
 
-```
+```csharp
 @Html.DevExpress().Scheduler(SchedulerSettingsHelper.CommonSchedulerSettings).Bind(Model.FetchAppointments, Model.Resources).GetHtml()
 ```
 
-The `FetchAppointmentsMethod` delegate allows you to dynamically limit the number of appointments loaded into the Scheduler storage.
-
-```
+```csharp
 public static SchedulerDataObject DataObject {
     get {
         SchedulerDataObject sdo = new SchedulerDataObject();
@@ -26,7 +24,6 @@ public static SchedulerDataObject DataObject {
         return sdo;
     }
 }
-
 public static object FetchAppointmentsHelperMethod(FetchAppointmentsEventArgs args) {
     args.ForceReloadAppointments = true;
     SchedulingDataClassesDataContext db = new SchedulingDataClassesDataContext();
@@ -34,7 +31,6 @@ public static object FetchAppointmentsHelperMethod(FetchAppointmentsEventArgs ar
 }
 ```
 
-The [Interval](https://docs.devexpress.com/CoreLibraries/DevExpress.XtraScheduler.TimeIntervalEventArgs.Interval) property specifies the visible time interval. You can use this argument to calculate a new time interval to query a data source for appointments. Fetched appointments are returned to the caller to populate the Scheduler.
 
 ## Files to Review
 
