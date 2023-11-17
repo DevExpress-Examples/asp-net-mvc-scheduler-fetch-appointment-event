@@ -6,7 +6,7 @@
 
 # Scheduler for ASP.NET MVC -  - How to implement the FetchAppointment delegate method
 
-This example demonstrates how to implenent the [FetchAppointmentsMethod](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.FetchAppointmentsMethod) delegate method to dynamically limit the number of appointments loaded into the [Scheduler](https://docs.devexpress.com/AspNetMvc/11675/components/scheduler/scheduler-overview) storage. This approach can be useful when a scheduler contains a large amount of data, and only a small part of it needs to be loaded at one time.
+This example demonstrates how to implenent the [FetchAppointmentsMethod](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.FetchAppointmentsMethod) delegate to dynamically limit the number of appointments loaded into the [Scheduler](https://docs.devexpress.com/AspNetMvc/11675/components/scheduler/scheduler-overview) storage. This approach can be useful when a scheduler contains a large amount of data, and only a small part of it needs to be loaded at one time.
 
 Call [SchedulerExtension.Bind(FetchAppointmentsMethod)](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SchedulerExtension.Bind(DevExpress.Web.Mvc.FetchAppointmentsMethod)) or [SchedulerExtension.Bind(FetchAppointmentsMethod, Object)](https://docs.devexpress.com/AspNetMvc/DevExpress.Web.Mvc.SchedulerExtension.Bind(DevExpress.Web.Mvc.FetchAppointmentsMethod-System.Object)) method to bind the Scheduler component to an appointment data source modified dynamically. 
 
